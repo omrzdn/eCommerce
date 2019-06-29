@@ -1,0 +1,60 @@
+
+/* Start Login Form */
+
+.login {
+    width: 300px;
+    margin: 100px auto;
+}
+
+.login h4 {color: #008dde; font-weight: bold; padding-bottom: 20px}
+
+.login input { margin-bottom: 10px}
+
+.login .form-control {background-color: #EAEAEA}
+
+.login .btn { background-color: #008dde}
+
+/* End Login Form */
+
+/* Start navigation bar */
+
+.dropdownprofile {
+
+    position: fixed;
+    right: 150px;
+
+}
+
+.navbar-brand{
+
+    font-size: 1em;   
+}
+
+.dropdown-menu {
+
+    padding: 0;
+    left: -60px;
+}
+.dropdown-item {
+
+    padding: 10px;
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #008dde;
+}
+/* End navigation bar */
+
+/* Start Member Page */
+ h1 {
+
+    font-size: 50px;
+    margin: 40px 0;
+    font-weight: bold;
+    color: #666;
+ }
+
+/* End Member Page */
