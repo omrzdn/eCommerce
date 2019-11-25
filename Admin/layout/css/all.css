@@ -54,13 +54,13 @@
 
 .fa-fw {
   text-align: center;
-  width: 1.25em; }
+  width:15em; }
 
 .fa-ul {
   list-style-type: none;
   margin-left: 15em;
-  
-  padding-left: 0; }
+
+  padding-left: 15; }
   .fa-ul > li {
     position: relative; }
 
