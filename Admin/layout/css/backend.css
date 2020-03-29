@@ -27,7 +27,7 @@
 
 .navbar-brand{
 
-    font-size: 1em;   
+    font-size: 1em;
 }
 
 .dropdown-menu {
@@ -55,6 +55,11 @@
     margin: 40px 0;
     font-weight: bold;
     color: #666;
+ }
+
+ .form-group input[type=submit]{
+
+   width: 58%
  }
 
 /* End Member Page */
