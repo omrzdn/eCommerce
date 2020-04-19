@@ -1,4 +1,4 @@
-<?php 
+<?php
 
     $dsn    = 'mysql:host=localhost;dbname=shop';
     $user   = 'root';
@@ -8,12 +8,12 @@
     );
 
     try {
-        
+
         $con = new PDO($dsn, $user, $pass, $option);
         $con -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
     catch (PDOException $e){
-        
+
         echo "Falid to Connect" . $e-> getmessage();
      }

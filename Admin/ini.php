@@ -1,5 +1,5 @@
-<?php 
-    
+<?php
+
     // includes Files
 
     include 'connect.php';
@@ -12,8 +12,7 @@
     $langsRoute = 'includes/langs/';
     $funcRoute  = 'includes/functions/';
 
-    //including The Important Files 
-
+    //including The Important Files
     include $funcRoute  . 'function.php';
     include $langsRoute . 'english.php';
     include $tplRoute   . 'header.php';

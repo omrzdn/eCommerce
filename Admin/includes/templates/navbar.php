@@ -1,19 +1,29 @@
+<?php
+
+global $con;
+$stmt = $con->prepare("SELECT FullName FROM Users WHERE userID = :userid");
+$stmt->execute([
+
+    ':userid' => $_SESSION['ID']
+]);
+
+?>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="dashboard.php">Home</a>
+    <a class="navbar-brand" href="dashboard.php">HOME</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="#">Sections</a>
+          <a class="nav-link" href="categories.php">CATEGORIES</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Items</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Members</a>
+          <a class="nav-link" href="members.php">Members</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Statistics</a>
@@ -25,7 +35,9 @@
       <ul class="navbar-nav dropdownprofile">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          My Profile
+          <?
+          echo $stmt->fetchColumn();
+          ?>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="members.php?do=edit&userID=<?php echo $_SESSION['ID'];?>">Edit Profile</a>

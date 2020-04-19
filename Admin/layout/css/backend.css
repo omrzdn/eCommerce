@@ -1,3 +1,8 @@
+body {
+
+    background-color: #f5f5f5;
+}
+
 
 /* Start Login Form */
 
@@ -20,7 +25,7 @@
 
 .dropdownprofile {
 
-    position: fixed;
+    position: absolute;
     right: 150px;
 
 }
@@ -48,6 +53,85 @@
 }
 /* End navigation bar */
 
+/* Start Dashboard Page */
+
+.home-stats .stat {
+
+  padding: 20px;
+  font-size: 15px;
+  color: #fff;
+  border-radius: 10px;
+}
+
+.home-stats .stat a {
+
+    color: #fff;
+}
+
+.home-stats .stat a:hover {
+
+    text-decoration: none;
+}
+.home-stats .stat span {
+
+  display: block;
+  font-size: 60px;
+}
+
+.home-stats .st-members {
+
+    background-color: #3498db;
+
+}
+
+.home-stats .st-pending {
+
+    background-color: #c0392b;
+}
+
+.home-stats .st-items {
+
+    background-color: #d35400;
+}
+
+.home-stats .st-comments {
+
+    background-color: #76bb1b;
+}
+
+.latest{
+
+    margin-top: 30px;
+}
+
+.latest .card-heading {
+
+    padding-top: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    background-color: #f5f5f5
+}
+
+.latest .latest-users {
+
+    margin-bottom: 0;
+}
+
+.latest .latest-users li {
+
+    padding: 10px;
+    overflow: hidden;
+}
+
+.latest .latest-users li:nth-child(odd){
+    background-color: #eee;
+}
+
+.latest-users .btn-success {
+        padding: 3px 8px
+}
+/* End Dashboard Page */
+
 /* Start Member Page */
  h1 {
 
@@ -57,9 +141,40 @@
     color: #666;
  }
 
- .form-group input[type=submit]{
+.form-group input[type=submit]{ width: 58% }
 
-   width: 58%
+.show-pass{
+
+   position: absolute;
+   top: 2px;
+   right: -30px
  }
 
+ i {
+
+   position: relative;
+    margin-right: 5px;
+ }
+.main-table td {
+
+  background-color: #fff;
+  vertical-align: middle !important;
+
+}
+.main-table tr:first-child td{
+
+   background-color: #444;
+   color: #fff
+
+ }
+
+.main-table .btn {
+
+  padding: 3px 10px;
+}
+
+.main-table .activate {
+
+    margin-left: 5px;
+}
 /* End Member Page */

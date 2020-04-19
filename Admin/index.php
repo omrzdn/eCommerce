@@ -13,32 +13,36 @@
 
     // Chech if user Coming from HTTP Post Request
 
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $username = $_POST['user'];
         $password = $_POST['pass'];
         $hashedpass = sha1($password);
-
         //chech if user exist in Database
 
-        $stmt = $con -> prepare("SELECT userID, Username, Password From Users WHERE Username = ?  AND password = ? AND GroupID = 1");
-        $stmt ->execute(array($username, $hashedpass));
-        $row = $stmt -> fetch();
-        $count = $stmt ->rowCount();
+        $stmt = $con -> prepare("SELECT userID, Username, Password,FullName From Users WHERE Username = :username  AND password = :password AND GroupID = 1");
+        $stmt ->execute([
 
-        // if Count > 0 This Mean the Daabase Contain Record About this Username
-        
+          ':username' => $username,
+          ':password' => $hashedpass
+
+        ]);
+        $row = $stmt-> fetch();
+        $count = $stmt->rowCount();
+        // if Count > 0 This Mean the Database Contain Record About this Username
+
         if ($count > 0 ) {
 
-            echo "count";
+            echo "welcome" . $username;
             $_SESSION['username'] = $username; //Register Session Name
-            $_SESSION['ID'] = $row['userID']; //Register Session ID
+            $_SESSION['ID']       = $row['userID']; //Register Session ID
+            $_SESSION['fullname'] = $row['FullName']; //Register Session Fullname
             header('location: dashboard.php'); //redircet to dashborad
             exit();
         }
+
     }
 ?>
-
 
     <form class="login" action="<?php echo $_SERVER['PHP_SELF']?>" method="POST">
         <h4 class="text-center">Admin Login</h4>
