@@ -1,6 +1,26 @@
-$(document).ready(function(){
+$(function(){
 
    'use strict';
+
+   //Dashborad
+
+   $('.toggle-info').click(function(){
+
+      $(this).toggleClass('selected').parent().next('.card-body').fadeToggle(100);
+
+      if ($(this).hasClass('selected')){
+
+          $(this).html('<i class="fa fa-minus fa-lg"></i>');
+
+      }else {
+
+          $(this).html('<i class="fa fa-plus fa-lg"></i>');
+      }
+
+   });
+
+
+    //Hide placeholder on From Foucs
     $('[placeholder]').focusin(function(){
 
 

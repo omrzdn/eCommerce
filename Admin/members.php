@@ -10,6 +10,8 @@
 
 session_start();
 
+$pageTitle = 'Members';
+
 if (isset($_SESSION['username'])) {
 
     include 'ini.php';
@@ -39,7 +41,7 @@ if (isset($_SESSION['username'])) {
 
       //Select All Users From Databse Except Admins
 
-      $stmt = $con->prepare("SELECT * FROM Users WHERE GroupID != 1 $query ");
+      $stmt = $con->prepare("SELECT * FROM Users WHERE GroupID != 1 $query ORDER BY UserID DESC ");
       $stmt->execute();
       $rows = $stmt->fetchAll();
 
@@ -51,6 +53,7 @@ if (isset($_SESSION['username'])) {
           <table class="main-table text-center table table-bordered">
             <tr>
               <td>#ID</td>
+              <td>Avatar</td>
               <td>Username</td>
               <td>EMail</td>
               <td>FullName</td>
@@ -64,6 +67,15 @@ if (isset($_SESSION['username'])) {
               echo '<tr>';
 
                 echo  '<td>'. $row['userID'] .'</td>';
+                echo  '<td>';
+                if (empty($row['avatar'])) {
+
+                    echo "no image";
+                }else {
+                    echo '<img src="upload/avatars/'.
+                    $row['avatar'].'" alt="" />';
+                }
+                echo '</td>';
                 echo  '<td>'. $row['Username'].'</td>';
                 echo  '<td>'. $row['Email'].'</td>';
                 echo  '<td>'. $row['FullName'].'</td>';
@@ -88,11 +100,11 @@ if (isset($_SESSION['username'])) {
 
       </div>
 
-    <? }elseif($do == 'add') { //add page ?>
+  <? }elseif($do == 'add') { //add members ?>
 
       <h1 class="text-center">Add New Member</h1>
       <div class="container">
-          <form class="form-horizontal" action="?do=insert" method="POST">
+          <form class="form-horizontal" action="?do=insert" method="POST" enctype="multipart/form-data">
               <!-- Start Full Name Field -->
               <div class="form-group form-group-lg">
                   <label class="col-sm-2 control-label">Full Name</label>
@@ -148,6 +160,19 @@ if (isset($_SESSION['username'])) {
                   </div>
               </div>
               <!-- End Password Field -->
+              <!-- Start Avatar Field -->
+              <div class="form-group form-group-lg">
+                  <label class="col-sm-2 control-label">User Avatar</label>
+                  <div class="col-sm-10 col-md-6">
+                      <input
+                        type="file"
+                        name="avatar"
+                        class="form-control"
+                        autocomplete="off"
+                        required/>
+                  </div>
+              </div>
+              <!-- End Avatar Field -->
               <!-- Start Submit Field -->
               <div class="form-group form-group-lg">
                   <div class="col-sm-offset-2 col-sm-10">
@@ -163,9 +188,28 @@ if (isset($_SESSION['username'])) {
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-              echo "<h1 class='text-center'>Update Page</h1>";
+              echo "<h1 class='text-center'>Insert Member</h1>";
               echo "<div class='container'>";
 
+              //upload files
+
+              $avatarName = $_FILES['avatar']['name'];
+              $avatarSize = $_FILES['avatar']['size'];
+              $avatarTmp = $_FILES['avatar']['tmp_name'];
+              $avatarType = $_FILES['avatar']['type'];
+
+              //List if allow Extensions
+              $avatarAllowedExtension = array('jpeg', 'jpg', 'png', 'gif');
+
+              $tmp = explode('.' ,$avatarName);
+              $avatarExtension = strtolower(end($tmp));
+
+              if (!in_array($avatarExtension,$avatarAllowedExtension)) {
+
+                echo "this extension is not allowed";
+              }
+
+              //Get var from form
               $password = $_POST['password'];
               $user     = $_POST['username'];
               $email    = $_POST['email'];
@@ -211,6 +255,10 @@ if (isset($_SESSION['username'])) {
 
               if (empty($formErrors)) {
 
+                  $avatar = rand(0, 100000) . '_' . $avatarName;
+
+                  move_uploaded_file($avatarTmp, "upload/avatars/" . $avatar);
+
                 // Check if users exists on not
 
                 $check = checkItem('Username', 'Users', $user);
@@ -225,8 +273,8 @@ if (isset($_SESSION['username'])) {
 
                   // Insert user info in database
 
-                  $stmt = $con->prepare('INSERT INTO Users(Username, Password, Email, FullName,RegStatus, Date)
-                                          VALUES(:username, :password, :email, :fullname, 1,now() )');
+                  $stmt = $con->prepare('INSERT INTO Users(Username, Password, Email, FullName,RegStatus, Date, avatar)
+                                          VALUES(:username, :password, :email, :fullname, 1,now(), :zavatar )');
 
                   $stmt->execute([
 
@@ -234,12 +282,13 @@ if (isset($_SESSION['username'])) {
                     ':password' => $hashedpass,
                     ':email'    => $email,
                     ':fullname' => $name,
+                    'zavatar'   => $avatar
                   ]);
                   // Echo Success Message
 
                   $theMsg = '<div class="alert alert-success">' . $stmt->rowCount() . ' User Inserted</div>';
 
-                  redirectHome($theMsg ,'back');
+                  redirectHome($theMsg);
 
                 }
 

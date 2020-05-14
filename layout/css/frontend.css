@@ -1,0 +1,180 @@
+body {
+
+    background-color: #f5f5f5;
+}
+
+h1 {
+
+    font-size: 50px;
+    margin: 40px 0;
+    font-weight: bold;
+    color: #666;
+}
+
+/* Start upper bar */
+
+.upper-bar {
+    padding: 10px;
+    background-color: #fff
+}
+
+.upper-bar .upper-form {
+
+    left: 750px;
+    position: relative;
+}
+
+.btn-group img {
+    width: 35px;
+    border-radius: 50%;
+}
+
+/* End upper bar */
+
+/* Start navigation bar */
+.navbar-right{
+    position: absolute;
+    right: 170px;
+}
+.navbar-right .nav-link {
+
+    color: #e6e2e2 !important;
+    font-weight: bold;
+}
+.navbar-right a:hover {
+
+    color: #fff
+}
+
+.navbar-brand{
+
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.dropdown-menu {
+
+    padding: 0;
+    left: -60px;
+}
+.dropdown-item {
+
+    padding: 10px;
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+    color: #fff;
+    text-decoration: none;
+    background-color: #008dde;
+}
+/* End navigation bar */
+
+/* Start  login form */
+
+.login-page form {
+
+    max-width: 350px;
+    margin: auto;
+}
+
+.login-page form input {
+
+    margin-bottom: 10px;
+}
+.login-page h1 { color: #C0C0C0}
+
+.login-page h1 span {
+    cursor: pointer;
+}
+
+.login-page [data-class="login"].selected { color: #2980b9 }
+
+.login-page [data-class="signup"].selected { color: #3eb352 }
+
+
+.login-page .login .submit {
+
+    background-color: #fff;
+    color: #2980b9;
+    padding: 5px 30px;
+    margin: auto;
+    font-weight: bold;
+    position: relative;
+    left: 110px;
+    margin-bottom: 10px;
+}
+.login-page .submit:hover{
+
+    color: #fff;
+    background-color: #2980b9;
+}
+
+.login-page .signup {display: none;}
+.login-page .signup .submit {
+
+    background-color: #fff;
+    border-color: #3eb352;
+    color: #3eb352;
+    padding: 5px 30px;
+    margin: auto;
+    font-weight: bold;
+    position: relative;
+    left: 110px;
+    margin-bottom: 10px;
+}
+.login-page .signup .submit:hover{
+
+    color: #fff;
+    background-color: #3eb352;
+}
+
+/* End login form */
+
+/* Start Category Page */
+.item-box {position: relative;}
+.item-box .price-tag {
+
+    background-color: #B4B4B4;
+    padding: 2px 10px;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    font-weight: bold;
+    color: #FFF;
+}
+
+/* End Category Page */
+
+/* Start Profile Page */
+.card .card-default {
+
+    background-color: #606061;
+    padding: 7px;
+    color: #fff;
+    font-weight: bold;
+}
+.block {
+    margin: 20px 0 0;
+}
+
+.information {
+    margin-top: 20px;
+}
+
+.information ul {
+    padding: 0;
+    margin: 0;
+}
+
+.information ul li {
+    padding: 10px;
+}
+.information ul li:nth-child(odd){
+    background-color: #eee
+}
+.information ul li span {
+    display: inline-block;
+    width: 120px;
+}
+/* End Profile Page */

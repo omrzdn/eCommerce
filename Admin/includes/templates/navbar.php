@@ -20,10 +20,13 @@ $stmt->execute([
           <a class="nav-link" href="categories.php">CATEGORIES</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Items</a>
+          <a class="nav-link" href="items.php">ITEMS</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="members.php">Members</a>
+          <a class="nav-link" href="members.php">MEMBERS</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="comments.php">COMMENTS</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Statistics</a>
@@ -40,6 +43,7 @@ $stmt->execute([
           ?>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="../index.php">Vists Shop</a>
             <a class="dropdown-item" href="members.php?do=edit&userID=<?php echo $_SESSION['ID'];?>">Edit Profile</a>
             <a class="dropdown-item" href="#">Settings</a>
             <a class="dropdown-item" href="logout.php">Logout</a>
@@ -50,4 +54,4 @@ $stmt->execute([
   </div>
 </nav>
 
-<?php include $tplRoute . "footer.php"; ?>
+<?php require_once $tplRoute . "footer.php"; ?>
