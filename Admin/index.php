@@ -20,7 +20,7 @@
         $hashedpass = sha1($password);
         //chech if user exist in Database
 
-        $stmt = $con -> prepare("SELECT userID, Username, Password,FullName From Users WHERE Username = :username  AND password = :password AND GroupID = 1");
+        $stmt = $con -> prepare("SELECT userID, Username, Password,FullName From users WHERE Username = :username  AND Password = :password AND GroupID = 1");
         $stmt ->execute([
 
           ':username' => $username,

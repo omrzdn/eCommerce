@@ -21,7 +21,7 @@
 
             //Check If the User Exist In Database
 
-            $stmt = $con->prepare("SELECT Username, Password FROM Users WHERE Username = ? AND Password = ?");
+            $stmt = $con->prepare("SELECT Username, Password FROM users WHERE Username = ? AND Password = ?");
             $stmt->execute(array($user, $hashedPass));
             $count = $stmt->rowCount();
 
@@ -42,7 +42,7 @@
             $email      = $_POST['email'];
             $hashedPass = sha1($pass);
 
-            $check = checkItem("Username", "Users", $user);
+            $check = checkItem("Username", "users", $user);
 
             if ($check == 1) {
                 echo "Sorry, This user is exists";
